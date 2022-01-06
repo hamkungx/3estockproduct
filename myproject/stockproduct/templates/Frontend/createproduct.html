@@ -6,30 +6,26 @@
       <div class="col">
       </div>
       <div class="col-6"><br><br><br><br><br><br>
-        <form class="form-floating">
-            <input type="email" class="form-control" id="floatingInputValue" placeholder="name@example.com" >
-            <label for="floatingInputValue">กรอกชื่อสินค้า</label>
-          </form><br><br>
-          <form class="form-floating">
-            <input type="email" class="form-control" id="floatingInputValue" placeholder="name@example.com" >
-            <label for="floatingInputValue">กรอกรหัสสินค้า</label>
-          </form>
+        <form class="form-floating" action="{% url 'createproductsx' %}" method="post">
+          {% csrf_token %}
+          <div class="form-group" >
+          <label for="NameProduct">กรอกชื่อสินค้า</label><br>
+          <input type="text" class="form-control"  name="NameProduct" placeholder="กรอกชื่อสินค้า" >
+          </div><br><br>
+          <div class="form-group">
+            <label for="productID">กรอกรหัสสินค้า</label><br>
+            <input type="tel" class="form-control"  name="productID" placeholder="กรอกรหัสสินค้า" >
+          </div><br>
+          {% for message in messages%}
+                <p style="color: red;">{{message}}</p>
+                {% endfor%}
+          <button  class="btn btn-primary container" type="submit">ยืนยัน</button>
+        </form>
+
       </div>
       <div class="col">
       </div>
     </div>
   </div>
-  <div class="container">
-    <div class="row">
-      <div class="col">
-      </div>
-      <div class="col-6"><br><br>
-          <a class="btn btn-primary container" href="#" role="button">ยืนยัน</a>
-      </div>
-      <div class="col">
-      </div>
-    </div>
   </div>
-
-
 {%endblock%}

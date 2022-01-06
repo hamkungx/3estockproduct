@@ -7,20 +7,42 @@
       </div>
       <div class="col-6"><br><br><br><br><br><br>
         <form class="form-floating">
-            <input type="email" class="form-control" id="floatingInputValue" placeholder="name@example.com" >
-            <label for="floatingInputValue">ชื่อ Product</label>
+            <input type="text" class="form-control" name="po" placeholder="Search" >
+            <label for="po">กรุณากรอกชื่อสินค้า หรือรหัสสินค้า</label>
+            <br>
+            <button  class="btn btn-primary container" type="submit">ค้นหา</button>
           </form>
       </div>
       <div class="col">
       </div>
     </div>
   </div>
+
+
+
+
+
   <div class="container">
     <div class="row">
       <div class="col">
       </div>
-      <div class="col-6"><br><br>
-          <a class="btn btn-primary container" href="#" role="button">ค้นหา</a>
+      <div class="col-8"><br><br><br><br><br><br>
+        {% for blog in latest%}
+        <div class="card mb-8 container" style="max-width: 540px;">
+          <div class="row g-0">
+            <div class="col-4">
+              <img src="{{blog.code.url}}" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col">
+              <div class="card-body">
+                <h5 class="card-title">{{blog.NameProduct}}</h5>
+                <p class="card-text">{{blog.productID}}</p>
+              </div>
+              <button  class="btn btn-primary container" type="submit">เพิ่ม PO</button>
+            </div>
+          </div>
+        </div><br>
+        {% endfor%}
       </div>
       <div class="col">
       </div>
