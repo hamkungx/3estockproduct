@@ -31,4 +31,29 @@ def createproductsx(request):
     except:
             return redirect("createproducts")
 
+def createpox(request,id):
+    sblog = Stockproduct.objects.get(id=id)
+    sblog.save()
+    return render(request,"frontend/createpo.html",{"blog":sblog})
+
+def createpoc(request):
+    try:
+            request.method == "POST"
+            #รับค่าฟอร์
+            
+            NameProduct = request.POST["NameProduct"]
+            productID = request.POST["productID"]
+            createPo = request.POST['createPo']
+
+            #บันทึกข่าวสาร
+            admission = CreatePo(createPo=createPo,productID=productID,NameProduct=NameProduct)
+            admission.save()
+
+            messages.info(request,"บันทึกข้อมูลเรียบร้อย")
+            return redirect("index")
+    except:
+            return redirect("index")
+
+def poqrs(request):
+    return render(request,"frontend/poqr.html")
 

@@ -1,0 +1,45 @@
+{% extends "frontend/layout.html"%}
+{% load static%}
+{%block content%}
+<div class="container">
+    <div class="row">
+      <div class="col">
+      </div>
+      <div class="col-6"><br><br><br><br><br><br>
+        
+        <div class="card mb-8 container" style="max-width: 540px;">
+          <form class="form-floating"  action="{% url 'createpoc' %}" method="post">
+            {% csrf_token %}
+            <div class="row g-0">
+              <div class="col-4">
+                <img src="{{blog.code.url}}" class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col"><br>
+                  <div>
+                    <label for="NameProduct">ชื่อสินค้า</label><br>
+                     <input type="text" class="form-control" name="NameProduct"  value="{{blog.NameProduct}}">
+                    <br>
+                  </div>
+                  <div>
+                    <label for="productID">รหัสสินค้า</label><br>
+                     <input type="text" class="form-control" name="productID" value="{{blog.productID}}">
+                    <br>
+                  </div>
+               <div>
+                <label for="createPo">กรอกเลข PO</label><br>
+                <input type="text" class="form-control" name="createPo"  placeholder="กรุณากรอกเลข PO"><br>
+              </div>
+                  
+                    <button  class="btn btn-primary container" type="submit">ยืนยัน</button><br><br>
+                    
+                  </form>
+                  </div>
+              </div>
+            </div>
+          </div><br>
+      <div class="col">
+      </div>
+    </div>
+  </div>
+  </div>
+{%endblock%}

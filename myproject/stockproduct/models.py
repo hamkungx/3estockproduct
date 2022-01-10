@@ -24,3 +24,12 @@ class Stockproduct(models.Model):
         self.code.save(files_name,File(stream),save=False)
         qr_offset.close()
         super().save(*args, **kwargs)
+
+class CreatePo(models.Model):
+    NameProduct = models.CharField(max_length=100)
+    productID = models.CharField(max_length=100)
+    createPo = models.CharField(max_length=100)
+    addtime = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self) -> str:
+        return self.createPo
