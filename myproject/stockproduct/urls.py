@@ -7,6 +7,6 @@ urlpatterns=[
     path('createproductsx',createproductsx,name='createproductsx'),  
     path('createpo/<int:id>',createpox,name='createpox'),   
     path('createpoc',createpoc,name='createpoc'),  
-    path('po/<int:id>',poqrs,name='poqrs'), 
+    path('po',poqrs,name='poqrs'), 
     
 ]

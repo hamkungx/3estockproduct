@@ -50,9 +50,9 @@ def createpoc(request):
             admission.save()
 
             messages.info(request,"บันทึกข้อมูลเรียบร้อย")
-            return redirect("index")
+            return redirect("poqrs")
     except:
-            return redirect("index")
+            return redirect("poqrs")
 
 def poqrs(request):
     return render(request,"frontend/poqr.html")
