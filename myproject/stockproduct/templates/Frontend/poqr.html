@@ -2,33 +2,62 @@
 {% load static%}
 {%block content%}
 <div class="container">
+  <div class="row">
+    <div class="col">
+    </div>
+
+          <div class="col">
+            {% if messages %}
+            <ul class="messages">
+                   {% for message in messages %}
+                         <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                   {% endfor %}
+           </ul>
+    {% endif %}
+          </div>
+
+    <div class="col">
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
     <div class="row">
       <div class="col">
       </div>
       <div class="col-8">
         <div class="card  container" style="max-width: 700px;"><br>
-        <form class="form-floating"  action="" method="post">
-          <div class="mb-3 row">
-            <label for="inputPassword" class="col-sm-2 col-form-label">ชื่อสินค้า</label>
-            <div class="col-sm-10">
-              <input type="password" class="form-control" id="inputPassword">
-            </div>
-          </div>
-          <div class="mb-3 row">
-            <label for="inputPassword" class="col-sm-2 col-form-label">รหัสสินค้า</label>
-            <div class="col-sm-10">
-              <input type="password" class="form-control" id="inputPassword">
-            </div>
-          </div>
-        <div class="mb-3 row">
-          <label for="inputPassword" class="col-sm-2 col-form-label">หมายเลข PO</label>
-          <div class="col-sm-10">
-            <input type="password" class="form-control" id="inputPassword">
-          </div>
-        </div>
-        <button  class="btn btn-primary container" type="submit">QR CODE</button><br><br>
-      </form>
-    </div>
+          {% for blogs in blogs%}
+          <form method="POST">
+            {% csrf_token %}
+            <input type="text" value="{{blogs.productID}} || {{blogs.createPo}} || {{blogs.addtime}}"  required name="url">
+            <button type= "submit" >get qrcode</button>
+         </form>
+         {% endfor%}
+         {% for qr in qr_code %}
+         <img src="{{qr.image.url}}"/><br>
+         {%endfor%}
+
+          {% for blogs in blogs%}
+
+          <form class="form-floating" method="post">
+            {% csrf_token %}
+            <div class="row g-0">
+              <div class="col"><br>
+                  <div>
+                    
+                     <input type="text" class="form-control" name="qr_text"  value="{{blogs.productID}} || {{blogs.createPo}} || {{blogs.addtime}}" autofocus>
+                    <br>
+                  </div>              
+                    <button  class="btn btn-primary container" type="submit">ยืนยัน</button><br><br>
+                  </div> </div> 
+                  </form>
+                
+                  {% endfor%}
+                
+
+               </div>
        
               </div>
               <div class="col">
